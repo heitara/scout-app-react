@@ -30,7 +30,9 @@
 @silhouette-width:               @device-width + (@silhouette-chrome-horizontal * 2);
 @silhouette-height:              @device-height + (@silhouette-chrome-vertical * 2);
 
-
+@pitch-padding: 				20px;
+@pitch-center-circle-width: 	90px;
+@pitch-penalty-height: 			140px;
 
 #app {
 	height: 100%;
@@ -43,6 +45,115 @@
 	width: 100%;
 }
 
+.Pitch {
+    background-color: #238729;
+    width: @device-height;
+    height: @device-width;
+    position: relative;
+}
+
+.Pitch:after{
+  content: "";
+  border-left: 1px solid white;
+  position: absolute;
+  top : @pitch-padding;
+  left :@device-height / 2;
+  display:block;
+  height:@device-width - @pitch-padding * 2;
+}
+
+.Pitch:before{
+  content: "";
+  border: 1px solid white;
+  position: absolute;
+  top :@pitch-padding;
+  left :@pitch-padding;
+  display:block;
+  width: @device-height - @pitch-padding * 2;
+  height:@device-width - @pitch-padding * 2;
+}
+
+.center-circle{
+    position: absolute;
+    top: (@device-width - @pitch-center-circle-width) / 2;
+    left: (@device-height - @pitch-center-circle-width) / 2;;
+    width: @pitch-center-circle-width;
+    height: @pitch-center-circle-width;
+    border: 1px solid white;
+    border-radius: 50%;
+}
+.center-circle:after{
+    position: absolute;
+    top: @pitch-center-circle-width / 2 - 2;
+    left: @pitch-center-circle-width / 2 - 2;
+    width: 2px;
+    height: 2px;
+    background-color:white;
+    content:"";
+    border:1px solid white;
+}
+
+.penalty-area{
+    position: absolute;
+    height: 140px;
+    width: 80px;
+    top: (@device-width - 140) / 2;
+    border: 1px solid white;
+}
+
+.left .penalty-area{
+    left: @pitch-padding;
+    border-left: 0;
+}
+
+.right .penalty-area{
+    right: @pitch-padding;
+    border-right: 0;
+}
+
+.penalty-area:before{
+    position: absolute;
+    height: 70px;
+    width: 35px;
+    top: 35px;
+    border: 1px solid white;
+    content:"";
+}
+.left .penalty-area:before{
+	left:0px;
+	border-left:0;
+}
+.right .penalty-area:before{
+   right:0px;
+	border-right:0;
+}
+
+.penalty-area:after{
+    position: absolute;
+    height: 2px;
+    width: 2px;
+    top: 70px;
+    background-color:white;
+    content:"";
+}
+.left .penalty-area:after{
+    right:15px;
+}
+.right .penalty-area:after{
+    left:15px;
+}
+
+.player{
+  position:absolute;
+  border-radius:50%;
+  width:10px;
+  height:10px;
+}
+.player:after{
+  font-size:10px;
+  position:absolute;
+  left:3px;
+}
 
 // desktop wrapper
 @media only screen and (min-width : 480px) {
@@ -111,3 +222,4 @@
 		padding: 0;
 	}
 }
+

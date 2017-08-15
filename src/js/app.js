@@ -58,7 +58,7 @@ var MainViewController = React.createClass({
 	render () {
 		return (
 			<Container>
-				<UI.NavigationBar name="main" />
+				{/* <UI.NavigationBar name="main" /> */}
 				<ViewManager name="main" defaultView="tabs">
 					<View name="tabs" component={TabViewController} />
 				</ViewManager>
@@ -195,7 +195,7 @@ var TabViewController = React.createClass({
 		return (
 			<Container>
 				<ViewManager ref="vm" name="tabs" defaultView={selectedTab} onViewChange={this.onViewChange}>
-					<View name="start" component={require('./views/start')} nextHandler={this.nextScreen}/>
+					<View name="start" component={require('./views/pitch')} nextHandler={this.nextScreen}/>
 
 					<View name="tactics" component={require('./views/tactics')} nextHandler={this.nextScreen}/>
 
