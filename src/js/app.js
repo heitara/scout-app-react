@@ -157,13 +157,13 @@ var TabViewController = React.createClass({
 
 
 		switch (current) {
-			case "start":
-		//		console.log("Current Screen: " + current);
-				// console.log("Next Screen: " + next);
-				// this.setState({selectedTab: "list-simple"});
-				// this.selectTab(next);
-				this.selectTab("team-a");
-				break;
+		// 	case "start":
+		// //		console.log("Current Screen: " + current);
+		// 		// console.log("Next Screen: " + next);
+		// 		// this.setState({selectedTab: "list-simple"});
+		// 		// this.selectTab(next);
+		// 		this.selectTab("team-a");
+		// 		break;
 			
 			
 			default:
@@ -195,9 +195,13 @@ var TabViewController = React.createClass({
 		return (
 			<Container>
 				<ViewManager ref="vm" name="tabs" defaultView={selectedTab} onViewChange={this.onViewChange}>
-					<View name="start" component={require('./views/pitch')} nextHandler={this.nextScreen}/>
+					<View name="start" component={require('./views/start')} 
+					nextHandler={this.nextScreen}
+					nextScreenId="tactics"/>
 
-					<View name="tactics" component={require('./views/tactics')} nextHandler={this.nextScreen}/>
+					<View name="tactics" component={require('./views/tactics')} 
+					nextHandler={this.nextScreen}
+					screenId="tactics" nextScreenId="team-a"/>
 
 					<View name="team-a" component={require('./views/team')} 
 						nextHandler={this.nextScreen}
